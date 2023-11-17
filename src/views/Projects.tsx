@@ -43,10 +43,20 @@ const Projects = () => {
     >
       <div className="max-w-screen-2xl w-full py-16 px-12 mx-auto">
         <div className="flex-1 flex flex-col gap-4">
-          <h2 className="text-center xl:text-start text-4xl sm:text-5xl lg:text-[60px] font-bold text-textPrimary">
-            My recent <span className="text-secondary">projects</span>
-          </h2>
-          <div className="flex items-center gap-4 justify-center xl:justify-start flex-col sm:flex-row">
+          <Reveal>
+            <h2 className="text-center xl:text-start text-4xl sm:text-5xl lg:text-[60px] font-bold text-textPrimary">
+              My recent <span className="text-secondary">projects</span>
+            </h2>
+          </Reveal>
+          `
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            transition={transition()}
+            className="flex items-center gap-4 justify-center xl:justify-start flex-col sm:flex-row"
+          >
             <Button
               secondary={activeCategory === "uiUx" ? true : false}
               onClick={() => setActiveCategory("uiUx")}
@@ -59,12 +69,19 @@ const Projects = () => {
             >
               Web design
             </Button>
-          </div>
-          <div className="flex gap-12 mt-12 flex-wrap justify-center">
+          </motion.div>
+          <motion.div
+            variants={fadeIn("up")}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            transition={transition()}
+            className="flex gap-12 mt-12 flex-wrap justify-center"
+          >
             {filteredProjects().map((item) => (
               <Card imgSrc={item.img} title={item.title} />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

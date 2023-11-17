@@ -26,12 +26,30 @@ const Contact = () => {
     >
       <div className="max-w-screen-2xl flex flex-col xl:flex-row xl:justify-between items-center xl:items-start gap-12 w-full pt-20 pb-20 sm:pb-16 px-12">
         <div className="flex-1 flex flex-col gap-4">
-          <h2 className="text-center xl:text-start text-4xl sm:text-5xl lg:text-[60px] font-bold text-textPrimary">
-            Got a project in <span className="text-secondary">mind?</span>
-          </h2>
-          <img src={contactIllustration} alt="" className="max-h-[348px]" />
+          <Reveal>
+            <h2 className="text-center xl:text-start text-4xl sm:text-5xl lg:text-[60px] font-bold text-textPrimary">
+              Got a project in <span className="text-secondary">mind?</span>
+            </h2>
+          </Reveal>
+          <motion.img
+            variants={scale()}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            transition={transition()}
+            src={contactIllustration}
+            alt=""
+            className="max-h-[348px]"
+          />
         </div>
-        <div className="flex-1 flex flex-col  gap-6 w-full  max-w-[696px]">
+        <motion.div
+          variants={fadeIn("up")}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          transition={transition()}
+          className="flex-1 flex flex-col  gap-6 w-full  max-w-[696px]"
+        >
           <div className="flex flex-col sm:flex-row items-center gap-6">
             <LabelInput labelText="Your name" placeholderText="Name" />
             <LabelInput labelText="Your email" placeholderText="Email" />
@@ -44,7 +62,7 @@ const Contact = () => {
             />
           </div>
           <Button secondary>Send Message</Button>
-        </div>
+        </motion.div>
       </div>
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-divider" />
     </div>

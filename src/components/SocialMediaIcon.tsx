@@ -7,13 +7,16 @@ import { FC } from "react";
 interface SocialMediaIconProps {
   imgSrc: string;
   title: string;
+  link?: string;
 }
 
-const SocialMediaIcon: FC<SocialMediaIconProps> = ({ imgSrc, title }) => {
+const SocialMediaIcon: FC<SocialMediaIconProps> = ({ imgSrc, title, link }) => {
   return (
     <Tooltip title={title} placement="bottom" arrow>
       <div className="flex items-center justify-center h-12 w-12 rounded-full bg-icons cursor-pointer hover:bg-secondary transition-all ease-linear duration-300">
-        <img src={imgSrc} alt="" />
+        <a rel="noopener noreferrer" target="_blank" href={link}>
+          <img src={imgSrc} alt="" />
+        </a>
       </div>
     </Tooltip>
   );
