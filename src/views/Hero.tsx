@@ -2,6 +2,7 @@
 import homePageImg from "../assets/home-page.svg";
 import homePageIllustation from "../assets/hero-illustration.svg";
 import downloadIcon from "../assets/download-btn-icon.svg";
+import { Link } from "react-scroll";
 
 // components
 import { Button } from "../components";
@@ -59,8 +60,8 @@ const Hero = () => {
             transition={transition()}
             className="my-12 flex flex-col sm:flex-row items-center gap-6 justify-center xl:justify-start"
           >
-            <Button secondary>Hire me</Button>
-            <Button icon={downloadIcon}>Download CV</Button>
+            <Link to="contact" smooth><Button secondary>Hire me</Button></Link>
+            {/* <Button icon={downloadIcon}>Download CV</Button> */}
           </motion.div>
         </div>
         <motion.img

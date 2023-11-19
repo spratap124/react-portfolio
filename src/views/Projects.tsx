@@ -8,7 +8,7 @@ import projectsPageImg from "../assets/projects-page.svg";
 import { Button, Card, Reveal } from "../components";
 
 // data
-import { projects } from "../data";
+import { projects, ProjectType, Category } from "../data";
 
 // framer-motion
 import { motion } from "framer-motion";
@@ -17,16 +17,17 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../utils/variants";
 import { transition } from "../utils/transition";
 
-type Category = "uiUx" | "web";
-
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>("uiUx");
+  const [activeCategory, setActiveCategory] = useState<Category>("web");
 
   const filteredProjects = () => {
     if (activeCategory === "uiUx") {
       return projects.filter((item) => item.category === "uiUx");
-    } else {
+    }
+    if (activeCategory === "web") {
       return projects.filter((item) => item.category === "web");
+    } else {
+      return projects.filter((item) => item.category === "apps");
     }
   };
 
@@ -57,18 +58,16 @@ const Projects = () => {
             transition={transition()}
             className="flex items-center gap-4 justify-center xl:justify-start flex-col sm:flex-row"
           >
-            <Button
-              secondary={activeCategory === "uiUx" ? true : false}
-              onClick={() => setActiveCategory("uiUx")}
-            >
-              UI/UX
-            </Button>
-            <Button
-              secondary={activeCategory === "web" ? true : false}
-              onClick={() => setActiveCategory("web")}
-            >
-              Web design
-            </Button>
+            {ProjectType.map((item: Category) => {
+              return (
+                <Button
+                  secondary={activeCategory === item ? true : false}
+                  onClick={() => setActiveCategory(item)}
+                >
+                  <span className="uppercase"> {item}</span>
+                </Button>
+              );
+            })}
           </motion.div>
           <motion.div
             variants={fadeIn("up")}
@@ -76,10 +75,14 @@ const Projects = () => {
             whileInView="visible"
             viewport={{ once: false }}
             transition={transition()}
-            className="flex gap-12 mt-12 flex-wrap justify-center"
+            className="flex gap-12 mt-12 flex-wrap justify-start"
           >
             {filteredProjects().map((item) => (
-              <Card imgSrc={item.img} title={item.title} />
+              <Card
+                imgSrc={item.img}
+                title={item.title}
+                projectLink={item.projectLink ? item.projectLink : undefined}
+              />
             ))}
           </motion.div>
         </div>
