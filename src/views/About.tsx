@@ -1,10 +1,6 @@
 // assets
 import aboutPageImg from "../assets/about-me-page.svg";
 import aboutIllustration from "../assets/about-illustration.svg";
-import facebookIcon from "../assets/facebook-icon.svg";
-import instagramIcon from "../assets/instagram-icon.svg";
-import twitterIcon from "../assets/twitter-icon.svg";
-import youtubeIcon from "../assets/youtube-icon.svg";
 
 // components
 import { SocialMediaIcon, Reveal } from "../components";
@@ -15,6 +11,9 @@ import { motion } from "framer-motion";
 // utils
 import { fadeIn, scale } from "../utils/variants";
 import { transition } from "../utils/transition";
+
+//data
+import { socialMedia } from "../data";
 
 const About = () => {
   return (
@@ -56,14 +55,15 @@ const About = () => {
             transition={transition()}
             className="flex items-center justify-center xl:justify-start gap-6"
           >
-            <SocialMediaIcon imgSrc={facebookIcon} title="Facebook" />
-            <SocialMediaIcon imgSrc={instagramIcon} title="Instagram" />
-            <SocialMediaIcon imgSrc={twitterIcon} title="Twitter" />
-            <SocialMediaIcon
-              imgSrc={youtubeIcon}
-              title="Youtube"
-              link="https://www.youtube.com/channel/UCzl6g-dG9i_HM9EqQ0_F1wA"
-            />
+            {socialMedia.map((item) => {
+              return (
+                <SocialMediaIcon
+                  imgSrc={item.imgSrc}
+                  title={item.title}
+                  link={item.link}
+                />
+              );
+            })}
           </motion.div>
         </div>
         <div className="flex-1 flex items-center justify-center">
