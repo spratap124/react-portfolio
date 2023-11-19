@@ -20,6 +20,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ![alt text](https://github.com/spratap124/react-portfolio/blob/main/src/assets/Screenshot2.png)
 
-![alt text](https://github.com/spratap124/react-portfolio/blob/main/src/assets/Screenshot3.png)
+![alt text](https://github.com/spratap124/react-portfolio/blob/main/src/assets/Screenshot5.png)
 
 ![alt text](https://github.com/spratap124/react-portfolio/blob/main/src/assets/Screenshot4.png)
